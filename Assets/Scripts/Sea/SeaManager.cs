@@ -7,6 +7,7 @@ public class SeaManager : MonoBehaviour
 {
     public Ship player;
     public SeaData seaData;
+    public UserInput input;
 
     public RectTransform deathScreenPanel;
     
@@ -15,10 +16,24 @@ public class SeaManager : MonoBehaviour
     private float timeToSpawnFlotsam;
     private float timeSinceLastSpawn;
 
+    private bool isGamePaused = false;
+
+    private void Awake()
+    {
+        input = new UserInput();
+    }
 
     void Start()
     {
         SetTarget(seaData.distanceToNextPort);
+
+        
+        UserInput.SailingActions action = input.Sailing;
+
+        action.Pause.performed += _ => PauseGame();
+
+        SetPause(false);
+
     }
 
     private void FixedUpdate()
@@ -58,19 +73,30 @@ public class SeaManager : MonoBehaviour
     {
         player.Die();
         deathScreenPanel.gameObject.SetActive(true);
-        Time.timeScale = 0f;
+        SetPause(true);
+    }
+
+    public void SetPause(bool isPaused)
+    {
+        isGamePaused = isPaused;
+        if (isGamePaused) Time.timeScale = 0f;
+        else Time.timeScale = 1f;
+    }
+    public void PauseGame()
+    {
+        SetPause(!isGamePaused);
+        Debug.Log("Paused");
     }
 
     public void RetryGame()
     {
         SceneManager.LoadScene("Sailing");
-        Time.timeScale = 1f;
     }
 
     public void QuitGame()
     {
         SceneManager.LoadScene("Title");
-        Time.timeScale = 1f;
+
     }
 
 
