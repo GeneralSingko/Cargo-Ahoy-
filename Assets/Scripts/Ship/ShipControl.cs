@@ -1,26 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ShipControl : MonoBehaviour
 {
-    public UserInput inputAction;
+    public UserInput input;
     public Ship player;
 
     private void Awake()
     {
-        inputAction = new UserInput();
+        input = new UserInput();
     }
 
     private void OnEnable()
     {
-        inputAction.Sailing.Enable();
+        input.Sailing.Enable();
     }
 
     private void OnDisable()
     {
-        inputAction.Sailing.Disable();
+        input.Sailing.Disable();
     }
 
     // Start is called before the first frame update
@@ -28,9 +27,9 @@ public class ShipControl : MonoBehaviour
     {
         player = GetComponent<Ship>();
 
-        UserInput.SailingActions action = inputAction.Sailing;
+        UserInput.SailingActions action = input.Sailing;
         
-        action.Steer.performed += _ => player.Steer(inputAction.Sailing.Steer.ReadValue<float>());
+        action.Steer.performed += _ => player.Steer(action.Steer.ReadValue<float>());
         action.Steer.canceled += _ => player.StopSteer();
 
         action.SpeedUp.performed += _ => player.GearUp();

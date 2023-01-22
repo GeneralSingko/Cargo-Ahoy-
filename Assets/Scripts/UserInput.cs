@@ -122,8 +122,8 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""13e2562d-cd94-4466-b084-d31ce69f18fa"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""id"": ""47a7c1bd-962a-443c-9e42-ae2e9623fbcf"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Sailing"",
@@ -133,11 +133,11 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""47a7c1bd-962a-443c-9e42-ae2e9623fbcf"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""id"": ""b1e54845-7b97-482e-9471-fc917f23e094"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Sailing"",
+                    ""groups"": """",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
